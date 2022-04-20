@@ -25,25 +25,29 @@
             android:textSize="18sp" />
 
         <EditText
+            android:id="@+id/editTextUsername"
             android:layout_width="293dp"
             android:layout_height="52dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/botron"
             android:ems="13"
             android:fontFamily="@font/poppins_bold"
-            android:hint=" Nhập tài khoản"
+            android:hint="Nhập tài khoản"
+            android:paddingLeft="30dp"
             android:textColorHint="@color/black"
             android:textSize="13sp" />
 
         <EditText
+            android:id="@+id/editTextPW"
             android:layout_width="290dp"
             android:layout_height="55dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/botron"
             android:ems="13"
             android:fontFamily="@font/poppins_bold"
-            android:hint=" Nhập mật khẩu"
+            android:hint="Nhập mật khẩu"
             android:inputType="textPassword"
+            android:paddingLeft="30dp"
             android:textColorHint="@color/black"
             android:textSize="13sp" />
 
@@ -57,6 +61,7 @@
             android:textSize="14sp" />
 
         <Button
+            android:id="@+id/btnLogin"
             android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -79,8 +84,10 @@
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/tvToSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:clickable="true"
                 android:fontFamily="@font/poppins_bold"
                 android:text="Đăng kí"
                 android:textColor="#B83F0B"

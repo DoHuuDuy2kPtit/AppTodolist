@@ -42,6 +42,7 @@
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/btnToSignIn"
             android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -50,6 +51,7 @@
             android:text="ĐĂNG NHẬP" />
 
         <Button
+            android:id="@+id/btnToSignUp"
             android:layout_width="310dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#FAA885"
