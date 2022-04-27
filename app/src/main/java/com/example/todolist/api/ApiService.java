@@ -1,7 +1,7 @@
 package com.example.todolist.api;
 
-import com.example.todolist.body.LoginBody;
-import com.example.todolist.body.RegisterBody;
+import com.example.todolist.model.User;
+import com.example.todolist.response.GetJobsRes;
 import com.example.todolist.response.LoginRes;
 import com.example.todolist.response.RegisterRes;
 import com.google.gson.Gson;
@@ -12,20 +12,25 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface ApiService {
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
     ApiService apiService = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.99:3000")
+            .baseUrl("https://api-todoapp.tk/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiService.class);
 
-    @POST("/sign-up")
-    Call<RegisterRes> registerUser(@Body RegisterBody body);
+    @POST("api/sign-up")
+    Call<RegisterRes> registerUser(@Body User body);
 
-    @POST("/sign-in")
-    Call<LoginRes> login(@Body LoginBody body);
+    @POST("api/sign-in")
+    Call<LoginRes> login(@Body User body);
+
+    @GET("api/jobs")
+    Call<GetJobsRes> getJobs(@Header("Authorization") String authHeader, @Query("limit") String limit, @Query("offset") String offset);
 }

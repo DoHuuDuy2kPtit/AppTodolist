@@ -13,7 +13,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.todolist.api.ApiService;
-import com.example.todolist.body.LoginBody;
+import com.example.todolist.model.User;
 import com.example.todolist.response.LoginRes;
 
 import retrofit2.Call;
@@ -48,17 +48,19 @@ public class Login extends AppCompatActivity {
                     return;
                 }
 
-                LoginBody body = new LoginBody(username, password);
+                User body = new User(username, password);
 
                 ApiService.apiService.login(body).enqueue(new Callback<LoginRes>() {
                     @Override
                     public void onResponse(Call<LoginRes> call, Response<LoginRes> response) {
-                        System.out.println(response);
-                        System.out.println(response.errorBody());
                         LoginRes res = response.body();
 
                         if (res != null && !res.getAccessToken().isEmpty()) {
                             Toast.makeText(Login.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                            SharedPreferences shared = getSharedPreferences("cookie", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = shared.edit();
+                            editor.putString("accessToken", res.getAccessToken());
+                            editor.commit();
                             Intent mainActivity = new Intent(Login.this, MainActivity.class);
                             startActivity(mainActivity);
                             return;
@@ -86,10 +88,14 @@ public class Login extends AppCompatActivity {
     }
 
     private void loadAccessToken() {
-        SharedPreferences shared = getSharedPreferences("tokens", Context.MODE_PRIVATE);
+        SharedPreferences shared = getSharedPreferences("cookie", Context.MODE_PRIVATE);
 
         if (shared != null) {
-
+            if (!shared.getString("accessToken", "").equals("")) {
+                Intent mainActivity = new Intent(Login.this, MainActivity.class);
+                startActivity(mainActivity);
+                return;
+            }
         }
     }
 }

@@ -3,30 +3,78 @@ package com.example.todolist;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.example.todolist.api.ApiService;
+import com.example.todolist.model.Job;
+import com.example.todolist.response.GetJobsRes;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-
     private AlertDialog.Builder dialogBuilder;
+    private ListView listJobs;
     private AlertDialog dialog;
     private EditText titleList;
     private ImageButton btnCancel, btnSave;
     private ImageButton btnAddList;
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        listJobs = (ListView) findViewById(R.id.listJobs);
         btnAddList = (ImageButton) findViewById(R.id.btnAddList);
+        SharedPreferences shared = getSharedPreferences("cookie", Context.MODE_PRIVATE);
+
+        if (shared != null) {
+            if (!shared.getString("accessToken", "").equals("")) {
+                token = shared.getString("accessToken", "");
+                getJobsAndRender();
+            }
+        }
 
         btnAddList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 createNewListDialog();
+            }
+        });
+    }
+
+    private void getJobsAndRender() {
+        ApiService.apiService.getJobs("Bearer " + token,"10", "0").enqueue(new Callback<GetJobsRes>() {
+            @Override
+            public void onResponse(Call<GetJobsRes> call, Response<GetJobsRes> response) {
+                GetJobsRes res = response.body();
+                System.out.println(res);
+
+                if (res != null) {
+                    ArrayList<Job> jobs = res.getJobs();
+                    ListJobAdapter adapter = new ListJobAdapter(MainActivity.this, R.layout.item_job, jobs);
+                    listJobs.setAdapter(adapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetJobsRes> call, Throwable t) {
+                Toast.makeText(MainActivity.this, "Lấy dữ liệu thất bại", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -57,5 +105,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 }

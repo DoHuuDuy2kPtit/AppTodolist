@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.todolist.api.ApiService;
-import com.example.todolist.body.RegisterBody;
+import com.example.todolist.model.User;
 import com.example.todolist.response.RegisterRes;
 
 import retrofit2.Call;
@@ -49,7 +49,7 @@ public class Signup extends AppCompatActivity {
                     return;
                 }
 
-                RegisterBody body = new RegisterBody(username, email, password, confirmPassword);
+                User body = new User(username, email, password, confirmPassword);
 
                 ApiService.apiService.registerUser(body).enqueue(new Callback<RegisterRes>() {
                     @Override
