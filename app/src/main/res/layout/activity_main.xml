@@ -45,13 +45,14 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:gravity="center" >
+
             <TextView
+                android:id="@+id/greetingText"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:textSize="18dp"
                 android:textColor="@color/white"
-                android:text="Xin chào Long Trần !"
-                />
+                android:text="Hãy quản lý công việc 1 cách thông minh"
+                android:textSize="18dp" />
         </RelativeLayout>
 
     </LinearLayout>
@@ -59,6 +60,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         >
         <androidx.cardview.widget.CardView
             android:layout_marginTop="30dp"
@@ -70,70 +72,26 @@
             android:padding="20px"
             >
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_margin="20dp"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck">
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/btnAddList"
-                    android:background="@drawable/pluscircle"
-                    />
-            </RelativeLayout>
-
-            <LinearLayout
+            <ListView
+                android:id="@+id/listJobs"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="20dp"
-                android:paddingRight="20dp"
-                android:paddingLeft="20dp"
-                >
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/assignment" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:layout_gravity="center"
-                    android:textSize="18dp"
-                    android:text="Danh sách công việc 1"
-                    />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:paddingLeft="20dp"
-                android:paddingTop="20dp"
-                android:paddingRight="20dp">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/assignment" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Danh sách công việc 2"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                android:layout_height="match_parent" />
 
         </androidx.cardview.widget.CardView>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="20dp"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck">
+
+            <ImageButton
+                android:id="@+id/btnAddList"
+                android:layout_width="44dp"
+                android:layout_height="39dp"
+                android:background="@drawable/pluscircle" />
+        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout >
