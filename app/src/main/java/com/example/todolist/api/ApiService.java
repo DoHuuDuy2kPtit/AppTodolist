@@ -18,6 +18,7 @@ import retrofit2.http.Query;
 
 public interface ApiService {
     // Base URL api: https://api-todoapp.tk/
+    // Add api prefix for all request.
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
     ApiService apiService = new Retrofit.Builder()
