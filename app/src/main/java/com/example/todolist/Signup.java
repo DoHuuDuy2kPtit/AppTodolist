@@ -12,6 +12,8 @@ import com.example.todolist.api.ApiService;
 import com.example.todolist.model.User;
 import com.example.todolist.response.RegisterRes;
 
+import org.json.JSONObject;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -54,14 +56,17 @@ public class Signup extends AppCompatActivity {
                 ApiService.apiService.registerUser(body).enqueue(new Callback<RegisterRes>() {
                     @Override
                     public void onResponse(Call<RegisterRes> call, Response<RegisterRes> response) {
-                        RegisterRes res = response.body();
-
-                        if (res != null && res.getMessage().equals("success")) {
-                            Toast.makeText(Signup.this, "Đăng kí thành công", Toast.LENGTH_SHORT).show();
+                        if (response.isSuccessful()) {
+                            Toast.makeText(Signup.this, "Đăng kí "+response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             return;
+                        } else {
+                            try {
+                                JSONObject jObjError = new JSONObject(response.errorBody().string());
+                                Toast.makeText(Signup.this, jObjError.getString("message"), Toast.LENGTH_LONG).show();
+                            } catch (Exception e) {
+                                Toast.makeText(Signup.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                            }
                         }
-
-                        Toast.makeText(Signup.this, "Có lỗi", Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
