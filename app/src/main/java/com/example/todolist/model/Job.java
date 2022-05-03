@@ -6,6 +6,10 @@ public class Job implements Serializable {
     private int id;
     private String title;
 
+    public Job(String title) {
+        this.title = title;
+    }
+
     public Job(int id, String title) {
         this.id = id;
         this.title = title;

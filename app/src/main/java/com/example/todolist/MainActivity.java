@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -16,7 +17,10 @@ import android.widget.Toast;
 
 import com.example.todolist.api.ApiService;
 import com.example.todolist.model.Job;
+import com.example.todolist.response.AddJobRes;
 import com.example.todolist.response.GetJobsRes;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,7 +98,43 @@ public class MainActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String title = titleList.getText().toString();
 
+                if (title.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Hãy điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                Job job = new Job(title);
+                Log.d("token",token);
+
+                ApiService.apiService.addJob("Bearer " + token, job).enqueue(new Callback<AddJobRes>() {
+                    @Override
+                    public void onResponse(Call<AddJobRes> call, Response<AddJobRes> response) {Log.d("a",response.toString());
+                        if (response.isSuccessful()) {
+                            Toast.makeText(MainActivity.this, "Thêm mới thành công", Toast.LENGTH_SHORT).show();
+                            getJobsAndRender();
+                            dialog.dismiss();
+                            return;
+                        } else {
+                            try {
+                                JSONObject jObjError = new JSONObject(response.errorBody().string());
+                                Toast.makeText(MainActivity.this, jObjError.getString("message"), Toast.LENGTH_LONG).show();
+                                Log.d("b","b");
+                            } catch (Exception e) {
+                                Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                                Log.d("c",title);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<AddJobRes> call, Throwable t) {
+                        System.out.println(t.getMessage());
+                        Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                });
             }
         });
 

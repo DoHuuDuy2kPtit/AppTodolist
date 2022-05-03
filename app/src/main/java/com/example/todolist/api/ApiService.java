@@ -1,6 +1,8 @@
 package com.example.todolist.api;
 
+import com.example.todolist.model.Job;
 import com.example.todolist.model.User;
+import com.example.todolist.response.AddJobRes;
 import com.example.todolist.response.GetJobsRes;
 import com.example.todolist.response.LoginRes;
 import com.example.todolist.response.RegisterRes;
@@ -34,4 +36,7 @@ public interface ApiService {
 
     @GET("api/jobs")
     Call<GetJobsRes> getJobs(@Header("Authorization") String authHeader, @Query("limit") String limit, @Query("offset") String offset);
+
+    @POST("api/jobs")
+    Call<AddJobRes> addJob(@Header("Authorization") String authHeader, @Body Job job);
 }
