@@ -1,6 +1,8 @@
 package com.example.todolist.api;
 
+import com.example.todolist.model.Password;
 import com.example.todolist.model.User;
+import com.example.todolist.response.ChangePasswordRes;
 import com.example.todolist.response.GetJobsRes;
 import com.example.todolist.response.LoginRes;
 import com.example.todolist.response.RegisterRes;
@@ -14,6 +16,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface ApiService {
@@ -32,6 +35,9 @@ public interface ApiService {
 
     @POST("api/sign-in")
     Call<LoginRes> login(@Body User body);
+
+    @PUT("api/users/changepassword")
+    Call<ChangePasswordRes> changePassword(@Header("Authorization") String authHeader, @Body Password password);
 
     @GET("api/jobs")
     Call<GetJobsRes> getJobs(@Header("Authorization") String authHeader, @Query("limit") String limit, @Query("offset") String offset);
