@@ -2,10 +2,9 @@ package com.example.todolist.api;
 
 import com.example.todolist.model.Password;
 import com.example.todolist.model.User;
-import com.example.todolist.response.ChangePasswordRes;
 import com.example.todolist.response.GetJobsRes;
 import com.example.todolist.response.LoginRes;
-import com.example.todolist.response.RegisterRes;
+import com.example.todolist.response.MessageRes;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -31,13 +30,13 @@ public interface ApiService {
             .create(ApiService.class);
 
     @POST("api/sign-up")
-    Call<RegisterRes> registerUser(@Body User body);
+    Call<MessageRes> registerUser(@Body User body);
 
     @POST("api/sign-in")
     Call<LoginRes> login(@Body User body);
 
     @PUT("api/users/changepassword")
-    Call<ChangePasswordRes> changePassword(@Header("Authorization") String authHeader, @Body Password password);
+    Call<MessageRes> changePassword(@Header("Authorization") String authHeader, @Body Password password);
 
     @GET("api/jobs")
     Call<GetJobsRes> getJobs(@Header("Authorization") String authHeader, @Query("limit") String limit, @Query("offset") String offset);

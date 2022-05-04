@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.todolist.api.ApiService;
 import com.example.todolist.model.Password;
-import com.example.todolist.response.ChangePasswordRes;
+import com.example.todolist.response.MessageRes;
 
 import org.json.JSONObject;
 
@@ -39,11 +39,11 @@ public class ChangePassword extends AppCompatActivity {
             return;
         }
         Password pass = new Password(oldPass, newPass);
-        ApiService.apiService.changePassword(token, pass).enqueue(new Callback<ChangePasswordRes>() {
+        ApiService.apiService.changePassword(token, pass).enqueue(new Callback<MessageRes>() {
             @Override
-            public void onResponse(Call<ChangePasswordRes> call, Response<ChangePasswordRes> response) {
+            public void onResponse(Call<MessageRes> call, Response<MessageRes> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(ChangePassword.this, "Thay đổi mật khẩu"+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChangePassword.this, "Đăng kí "+response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                     try {
@@ -56,8 +56,10 @@ public class ChangePassword extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ChangePasswordRes> call, Throwable t) {
-
+            public void onFailure(Call<MessageRes> call, Throwable t) {
+                System.out.println(t.getMessage());
+                Toast.makeText(ChangePassword.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                return;
             }
         });
 

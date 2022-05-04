@@ -1,9 +1,9 @@
 package com.example.todolist.response;
 
-public class ChangePasswordRes {
-    String message;
+public class MessageRes {
+    private String message;
 
-    public ChangePasswordRes(String message) {
+    public MessageRes(String message) {
         this.message = message;
     }
 
