@@ -96,8 +96,10 @@
         android:background="@drawable/shape1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView7"
@@ -123,13 +125,29 @@
         android:layout_marginTop="441dp"
         android:layout_marginEnd="292dp"
         android:layout_marginBottom="255dp"
-        android:text="Địa chỉ"
+        android:text="Mô tả"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="64dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="441dp"
+        android:layout_marginEnd="292dp"
+        android:layout_marginBottom="160dp"
+        android:text="Email"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/textView13"
@@ -155,7 +173,7 @@
         android:layout_marginTop="390dp"
         android:layout_marginEnd="292dp"
         android:layout_marginBottom="306dp"
-        android:text="Email"
+        android:text="Địa chỉ"
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -163,7 +181,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextTextPersonName5"
         android:layout_width="172dp"
         android:layout_height="45dp"
@@ -171,10 +189,9 @@
         android:layout_marginTop="95dp"
         android:layout_marginEnd="120dp"
         android:layout_marginBottom="591dp"
-        android:ems="10"
-        android:inputType="textPersonName"
         android:text="Thông tin tài khoản"
-        android:textColor="#51000000"
+        android:textSize="20dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -195,7 +212,7 @@
         tools:srcCompat="@drawable/avatar" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName6"
+        android:id="@+id/editTextName"
         android:layout_width="253dp"
         android:layout_height="45dp"
         android:layout_marginStart="134dp"
@@ -204,14 +221,14 @@
         android:layout_marginBottom="413dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Hoàn Trần"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName12"
+        android:id="@+id/editTextDescription"
         android:layout_width="253dp"
         android:layout_height="45dp"
         android:layout_marginStart="134dp"
@@ -219,14 +236,27 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="255dp"
         android:ems="10"
-        android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName10"
+        android:id="@+id/editTextEmail"
+        android:layout_width="253dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="134dp"
+        android:layout_marginTop="431dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="160dp"
+        android:ems="10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextPhoneNumber"
         android:layout_width="253dp"
         android:layout_height="45dp"
         android:layout_marginStart="134dp"
@@ -235,14 +265,13 @@
         android:layout_marginBottom="361dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="09774473343"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName11"
+        android:id="@+id/editTextAddress"
         android:layout_width="253dp"
         android:layout_height="45dp"
         android:layout_marginStart="134dp"
@@ -250,8 +279,6 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="306dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="tranquochoan@gmail.com"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -264,13 +291,15 @@
         android:layout_marginStart="107dp"
         android:layout_marginTop="526dp"
         android:layout_marginEnd="64dp"
-        android:layout_marginBottom="154dp"
+        android:layout_marginBottom="120dp"
         android:backgroundTint="#FAA885"
         android:text="Xác nhận"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

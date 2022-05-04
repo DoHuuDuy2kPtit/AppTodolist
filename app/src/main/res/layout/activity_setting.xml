@@ -98,7 +98,7 @@
         android:layout_marginTop="125dp"
         android:layout_marginEnd="158dp"
         android:layout_marginBottom="580dp"
-        android:text="Hoàn Trần"
+        android:text="To do list"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -137,7 +137,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_settings_24" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextTextPersonName"
         android:layout_width="172dp"
         android:layout_height="45dp"
@@ -145,10 +145,9 @@
         android:layout_marginTop="182dp"
         android:layout_marginEnd="187dp"
         android:layout_marginBottom="504dp"
-        android:ems="10"
-        android:inputType="textPersonName"
         android:text="Thông tin tài khoản"
-        android:textColor="#51000000"
+        android:textSize="20dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -202,7 +201,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
+    <TextView
         android:id="@+id/editTextTextPersonName2"
         android:layout_width="146dp"
         android:layout_height="42dp"
@@ -210,10 +209,9 @@
         android:layout_marginTop="410dp"
         android:layout_marginEnd="213dp"
         android:layout_marginBottom="279dp"
-        android:ems="10"
-        android:inputType="textPersonName"
         android:text="Thông tin thêm"
-        android:textColor="#57000000"
+        android:textSize="20dp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

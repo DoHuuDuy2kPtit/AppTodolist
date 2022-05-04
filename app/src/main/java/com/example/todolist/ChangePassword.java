@@ -25,6 +25,7 @@ import retrofit2.Response;
 public class ChangePassword extends AppCompatActivity {
     EditText txtOldPassword, txtNewPassword, txtComfirmNewPassword;
     Button btnAccept;
+
     private String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

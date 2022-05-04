@@ -24,6 +24,7 @@
         <activity android:name=".Login" />
         <activity android:name=".Setting" />
         <activity android:name=".ChangePassword"/>
+        <activity android:name=".UserInfo"/>
     </application>
 
 </manifest>
