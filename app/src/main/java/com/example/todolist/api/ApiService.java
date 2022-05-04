@@ -3,6 +3,7 @@ package com.example.todolist.api;
 import com.example.todolist.model.Password;
 import com.example.todolist.model.User;
 import com.example.todolist.response.GetJobsRes;
+import com.example.todolist.response.InfoRes;
 import com.example.todolist.response.LoginRes;
 import com.example.todolist.response.MessageRes;
 import com.google.gson.Gson;
@@ -37,6 +38,12 @@ public interface ApiService {
 
     @PUT("api/users/changepassword")
     Call<MessageRes> changePassword(@Header("Authorization") String authHeader, @Body Password password);
+
+    @GET("api/users/profile")
+    Call<InfoRes> getInfo(@Header("Authorization") String authHeader);
+
+    @PUT("api/users/profile")
+    Call<MessageRes> editInfo(@Header("Authorization") String authHeader, @Body InfoRes info );
 
     @GET("api/jobs")
     Call<GetJobsRes> getJobs(@Header("Authorization") String authHeader, @Query("limit") String limit, @Query("offset") String offset);

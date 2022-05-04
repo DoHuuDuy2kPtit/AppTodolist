@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Todolist">
         <activity
-            android:name=".ChangePassword"
+            android:name=".EntryApp"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,7 +23,7 @@
         <activity android:name=".Signup" />
         <activity android:name=".Login" />
         <activity android:name=".Setting" />
-<!--        <activity android:name=".ChangePassword"/>-->
+        <activity android:name=".ChangePassword"/>
     </application>
 
 </manifest>
