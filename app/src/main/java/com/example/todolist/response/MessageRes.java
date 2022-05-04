@@ -1,9 +1,9 @@
 package com.example.todolist.response;
 
-public class RegisterRes {
+public class MessageRes {
     private String message;
 
-    public RegisterRes(String message) {
+    public MessageRes(String message) {
         this.message = message;
     }
 

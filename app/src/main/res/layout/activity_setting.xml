@@ -13,7 +13,8 @@
         android:backgroundTint="#00FFFFFF"
         app:srcCompat="@drawable/ic_arrow_right"
         tools:layout_editor_absoluteX="314dp"
-        tools:layout_editor_absoluteY="473dp" />
+        tools:layout_editor_absoluteY="473dp"
+        tools:ignore="MissingConstraints" />
 
     <View
         android:id="@+id/view7"
@@ -300,7 +301,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/imageBtnEditInfo"
         android:layout_width="81dp"
         android:layout_height="30dp"
         android:layout_marginStart="314dp"
@@ -315,7 +316,7 @@
         app:srcCompat="@drawable/ic_arrow_right" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/imageBtnChangePasswd"
         android:layout_width="81dp"
         android:layout_height="30dp"
         android:layout_marginStart="314dp"
@@ -330,7 +331,7 @@
         app:srcCompat="@drawable/ic_arrow_right" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/imageBtnAbout"
         android:layout_width="81dp"
         android:layout_height="30dp"
         android:layout_marginStart="314dp"
@@ -360,7 +361,7 @@
         app:srcCompat="@drawable/ic_arrow_right" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/imageBtnSec"
         android:layout_width="81dp"
         android:layout_height="30dp"
         android:layout_marginStart="314dp"
@@ -375,7 +376,7 @@
         app:srcCompat="@drawable/ic_arrow_right" />
 
     <ImageButton
-        android:id="@+id/imageButton8"
+        android:id="@+id/imageBtnLogout"
         android:layout_width="43dp"
         android:layout_height="35dp"
         android:layout_marginStart="253dp"

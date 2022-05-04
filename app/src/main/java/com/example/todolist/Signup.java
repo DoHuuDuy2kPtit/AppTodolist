@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.todolist.api.ApiService;
 import com.example.todolist.model.User;
-import com.example.todolist.response.RegisterRes;
+import com.example.todolist.response.MessageRes;
 
 import org.json.JSONObject;
 
@@ -53,9 +53,9 @@ public class Signup extends AppCompatActivity {
 
                 User body = new User(username, email, password, confirmPassword);
 
-                ApiService.apiService.registerUser(body).enqueue(new Callback<RegisterRes>() {
+                ApiService.apiService.registerUser(body).enqueue(new Callback<MessageRes>() {
                     @Override
-                    public void onResponse(Call<RegisterRes> call, Response<RegisterRes> response) {
+                    public void onResponse(Call<MessageRes> call, Response<MessageRes> response) {
                         if (response.isSuccessful()) {
                             Toast.makeText(Signup.this, "Đăng kí "+response.body().getMessage(), Toast.LENGTH_SHORT).show();
                             return;
@@ -70,7 +70,7 @@ public class Signup extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<RegisterRes> call, Throwable t) {
+                    public void onFailure(Call<MessageRes> call, Throwable t) {
                         System.out.println(t.getMessage());
                         Toast.makeText(Signup.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                         return;

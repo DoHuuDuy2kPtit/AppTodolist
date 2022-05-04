@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private AlertDialog dialog;
     private EditText titleList;
     private ImageButton btnCancel, btnSave;
-    private ImageButton btnAddList;
+    private ImageButton btnAddList, imageBtnSettings;
     private String token;
 
     @Override
@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
         listJobs = (ListView) findViewById(R.id.listJobs);
         btnAddList = (ImageButton) findViewById(R.id.btnAddList);
+        imageBtnSettings =(ImageButton) findViewById(R.id.imageBtnSettings);
+
         SharedPreferences shared = getSharedPreferences("cookie", Context.MODE_PRIVATE);
 
         if (shared != null) {
@@ -58,6 +60,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 createNewListDialog();
+            }
+        });
+
+        imageBtnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, Setting.class);
+                i.putExtra("accessToken", token);
+                startActivity(i);
             }
         });
     }
