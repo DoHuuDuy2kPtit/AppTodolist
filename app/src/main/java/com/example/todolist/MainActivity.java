@@ -117,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 Job job = new Job(title);
-                Log.d("token",token);
 
                 ApiService.apiService.addJob("Bearer " + token, job).enqueue(new Callback<AddJobRes>() {
                     @Override
