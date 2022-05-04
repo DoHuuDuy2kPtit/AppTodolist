@@ -2,6 +2,9 @@ package com.example.todolist;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -18,14 +21,26 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ChangePassword extends AppCompatActivity {
-    EditText txtOldPassword, txtNewPassword, txtComfirmNewPassword;
+    private EditText txtOldPassword, txtNewPassword, txtComfirmNewPassword;
+    private Button btnAccept;
+    private String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
         Intent i = getIntent();
-        String token = i.getStringExtra("accessToken");
+        token = i.getStringExtra("accessToken");
+        Log.e(null, "token: "+ token);
         init();
+        btnAccept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changePass();
+            }
+        });
+
+    }
+    private void changePass(){
         String oldPass = txtOldPassword.getText().toString();
         String newPass = txtNewPassword.getText().toString();
         String confirmNewPass = txtComfirmNewPassword.getText().toString();
@@ -39,11 +54,11 @@ public class ChangePassword extends AppCompatActivity {
             return;
         }
         Password pass = new Password(oldPass, newPass);
-        ApiService.apiService.changePassword(token, pass).enqueue(new Callback<MessageRes>() {
+        ApiService.apiService.changePassword("Bearer "+token, pass).enqueue(new Callback<MessageRes>() {
             @Override
             public void onResponse(Call<MessageRes> call, Response<MessageRes> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(ChangePassword.this, "Đăng kí "+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ChangePassword.this, "Thay đổi mật khẩu "+response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                     try {
@@ -62,11 +77,11 @@ public class ChangePassword extends AppCompatActivity {
                 return;
             }
         });
-
     }
     private void init(){
         txtOldPassword = findViewById(R.id.editTextOldPassword);
         txtNewPassword = findViewById(R.id.editTextNewPassword);
         txtComfirmNewPassword = findViewById(R.id.editTextComfirmNewPassword);
+        btnAccept = findViewById(R.id.btnAccept);
     }
 }

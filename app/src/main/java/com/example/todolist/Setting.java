@@ -2,6 +2,7 @@ package com.example.todolist;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -9,13 +10,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Setting extends AppCompatActivity {
     private ImageButton imageBtnChangePasswd, imageBtnEditInfo;
+    String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         init();
         Intent i = getIntent();
-        String token = i.getStringExtra("accessToken");
+        token = i.getStringExtra("accessToken");
+        Log.e("","token:"+ token);
 
         imageBtnChangePasswd.setOnClickListener(new View.OnClickListener() {
             @Override
