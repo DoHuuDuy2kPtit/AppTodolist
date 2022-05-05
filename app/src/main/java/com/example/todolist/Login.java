@@ -22,7 +22,7 @@ import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
     EditText editTextUserName, editTextPW;
-    TextView tvToSignUp;
+    TextView tvToSignUp, tvForgotPass;
     Button btnLogin;
 
     @Override
@@ -33,6 +33,7 @@ public class Login extends AppCompatActivity {
         editTextUserName = (EditText) findViewById(R.id.editTextUsername);
         editTextPW = (EditText) findViewById(R.id.editTextPW);
         tvToSignUp = (TextView) findViewById(R.id.tvToSignUp);
+        tvForgotPass = (TextView) findViewById(R.id.tvForgotPass);
         btnLogin = (Button) findViewById(R.id.btnLogin);
 
         loadAccessToken();
@@ -85,7 +86,17 @@ public class Login extends AppCompatActivity {
                 startActivity(toSignUp);
             }
         });
+
+        tvForgotPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent forgotPass = new Intent(Login.this, ForgotPassword.class);
+                startActivity(forgotPass);
+            }
+        });
     }
+
+
 
     private void loadAccessToken() {
         SharedPreferences shared = getSharedPreferences("cookie", Context.MODE_PRIVATE);
