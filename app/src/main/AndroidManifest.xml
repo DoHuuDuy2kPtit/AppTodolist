@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.todolist">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -10,6 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Todolist">
+        <activity
+            android:name=".Task"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotPassword"
+            android:exported="false" />
         <activity
             android:name=".EntryApp"
             android:exported="true">
@@ -23,8 +30,8 @@
         <activity android:name=".Signup" />
         <activity android:name=".Login" />
         <activity android:name=".Setting" />
-        <activity android:name=".ChangePassword"/>
-        <activity android:name=".UserInfo"/>
+        <activity android:name=".ChangePassword" />
+        <activity android:name=".UserInfo" />
     </application>
 
 </manifest>

@@ -51,6 +51,9 @@ public interface ApiService {
     @GET("api/jobs")
     Call<GetJobsRes> getJobs(@Header("Authorization") String authHeader, @Query("limit") String limit, @Query("offset") String offset);
 
+    @PUT("api/users/forgotpassword")
+    Call<MessageRes> forgotPassword( @Body User user );
+
     @POST("api/jobs")
     Call<AddJobRes> addJob(@Header("Authorization") String authHeader, @Body Job job);
 }
