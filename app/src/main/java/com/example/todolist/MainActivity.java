@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -68,6 +69,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this, Setting.class);
                 i.putExtra("accessToken", token);
+                startActivity(i);
+            }
+        });
+
+        listJobs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Job item = (Job) parent.getItemAtPosition(position);
+                Intent i = new Intent(MainActivity.this, ListTask.class);
+                i.putExtra("accessToken", token);
+                i.putExtra("jobId", Integer.toString(item.getId()));
                 startActivity(i);
             }
         });

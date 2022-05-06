@@ -32,6 +32,13 @@
         <activity android:name=".Setting" />
         <activity android:name=".ChangePassword" />
         <activity android:name=".UserInfo" />
+        <activity android:name=".ListTask" android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
     </application>
 
 </manifest>
