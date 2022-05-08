@@ -57,7 +57,6 @@ public interface ApiService {
     Call<MessageRes> forgotPassword( @Body User user );
 
     @POST("api/jobs")
-
     Call<MessageRes> addJob(@Header("Authorization") String authHeader, @Body Job job);
 
     @GET("api/jobs/{jobId}/tasks")

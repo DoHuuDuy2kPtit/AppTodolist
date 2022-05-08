@@ -72,6 +72,13 @@ public class ListTask extends AppCompatActivity {
             }
         });
 
+        listTasks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateNewListDialog();
+            }
+        });
+
         imageBtnSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,6 +111,107 @@ public class ListTask extends AppCompatActivity {
     }
 
     public void createNewListDialog() {
+        dialogBuilder = new AlertDialog.Builder(this);
+        final View popUpAddList = getLayoutInflater().inflate(R.layout.activity_task, null);
+
+        titleList = (EditText) popUpAddList.findViewById(R.id.titleListT);
+        timeClock = (EditText) popUpAddList.findViewById(R.id.timeClock);
+        btnCancel = (Button) popUpAddList.findViewById(R.id.btnCancelT);
+        btnSave = (Button) popUpAddList.findViewById(R.id.btnSaveT);
+
+        timeClock.setInputType(InputType.TYPE_NULL);
+
+        dialogBuilder.setView(popUpAddList);
+        dialog = dialogBuilder.create();
+        dialog.show();
+
+        timeClock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar cldr = Calendar.getInstance();
+                int day = cldr.get(Calendar.DAY_OF_MONTH);
+                int month = cldr.get(Calendar.MONTH);
+                int year = cldr.get(Calendar.YEAR);
+                // date picker dialog
+                picker = new DatePickerDialog(ListTask.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                String zero = "0";
+                                if(monthOfYear + 1 < 10 && dayOfMonth < 10){
+                                    String monthOfYearString = zero.concat(monthOfYear + "");
+                                    String dayOfMonthString = zero.concat(dayOfMonth + "");
+                                    timeClock.setText(year + "-" + monthOfYearString + "-" + dayOfMonthString);
+                                }
+                                if(monthOfYear + 1 < 10 && dayOfMonth >= 10){
+                                    String monthOfYearString = zero.concat(monthOfYear + "");
+                                    timeClock.setText(year + "-" + monthOfYearString + "-" + dayOfMonth);
+                                }
+                                if(monthOfYear + 1 >= 10 && dayOfMonth < 10){
+                                    String dayOfMonthString = zero.concat(dayOfMonth + "");
+                                    timeClock.setText(year + "-" + monthOfYear + "-" + dayOfMonthString);
+                                }else{
+                                    timeClock.setText(year + "-" + monthOfYear + "-" + dayOfMonth);
+                                }
+                            }
+                        }, year, month, day);
+                picker.show();
+            }
+        });
+
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String title = titleList.getText().toString();
+                String time = timeClock.getText().toString();
+
+                if (title.isEmpty() || time.isEmpty()) {
+                    Toast.makeText(ListTask.this, "Hãy điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                Task task = new Task(title,time);
+                Log.d("tasskkkkkk", task.getTitle() + " " + task.getDueDate());
+
+                ApiService.apiService.addTask(jobId, "Bearer " + token, task).enqueue(new Callback<AddJobRes>() {
+                    @Override
+                    public void onResponse(Call<AddJobRes> call, Response<AddJobRes> response) {
+                        Log.d("a", response.toString());
+                        if (response.isSuccessful()) {
+                            Toast.makeText(ListTask.this, "Thêm mới thành công", Toast.LENGTH_SHORT).show();
+                            getTasksAndRender();
+                        } else {
+                            try {
+                                JSONObject jObjError = new JSONObject(response.errorBody().string());
+                                Toast.makeText(ListTask.this, jObjError.getString("message"), Toast.LENGTH_LONG).show();
+                                Log.d("b", "b");
+                            } catch (Exception e) {
+                                Toast.makeText(ListTask.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                                Log.d("c", title);
+                            }
+                        }
+                        dialog.dismiss();
+                    }
+
+                    @Override
+                    public void onFailure(Call<AddJobRes> call, Throwable t) {
+                        System.out.println(t.getMessage());
+                        Toast.makeText(ListTask.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                });
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+    }
+
+    public void updateNewListDialog() {
         dialogBuilder = new AlertDialog.Builder(this);
         final View popUpAddList = getLayoutInflater().inflate(R.layout.activity_task, null);
 
