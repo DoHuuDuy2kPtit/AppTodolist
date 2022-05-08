@@ -36,10 +36,10 @@ public class Signup extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = editTextUsername.getText().toString();
-                String email = editTextEmail.getText().toString();
-                String password = editTextPw.getText().toString();
-                String confirmPassword = editTextConfirmPw.getText().toString();
+                String username = editTextUsername.getText().toString().trim();
+                String email = editTextEmail.getText().toString().trim();
+                String password = editTextPw.getText().toString().trim();
+                String confirmPassword = editTextConfirmPw.getText().toString().trim();
 
                 if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
                     Toast.makeText(Signup.this, "Hãy điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();

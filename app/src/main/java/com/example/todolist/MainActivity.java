@@ -9,8 +9,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -18,13 +20,12 @@ import android.widget.Toast;
 
 import com.example.todolist.api.ApiService;
 import com.example.todolist.model.Job;
-import com.example.todolist.response.AddJobRes;
 import com.example.todolist.response.GetJobsRes;
+import com.example.todolist.response.MessageRes;
 
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -130,9 +131,9 @@ public class MainActivity extends AppCompatActivity {
 
                 Job job = new Job(title);
 
-                ApiService.apiService.addJob("Bearer " + token, job).enqueue(new Callback<AddJobRes>() {
+                ApiService.apiService.addJob("Bearer " + token, job).enqueue(new Callback<MessageRes>() {
                     @Override
-                    public void onResponse(Call<AddJobRes> call, Response<AddJobRes> response) {Log.d("a",response.toString());
+                    public void onResponse(Call<MessageRes> call, Response<MessageRes> response) {Log.d("a",response.toString());
                         if (response.isSuccessful()) {
                             Toast.makeText(MainActivity.this, "Thêm mới thành công", Toast.LENGTH_SHORT).show();
                             getJobsAndRender();
@@ -151,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<AddJobRes> call, Throwable t) {
+                    public void onFailure(Call<MessageRes> call, Throwable t) {
                         System.out.println(t.getMessage());
                         Toast.makeText(MainActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
                         return;
