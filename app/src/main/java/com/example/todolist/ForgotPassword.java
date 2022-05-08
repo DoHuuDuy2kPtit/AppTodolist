@@ -36,8 +36,8 @@ public class ForgotPassword extends AppCompatActivity {
     }
     private void forgotPass(){
         String user, pass;
-        user = username.getText().toString();
-        pass = password.getText().toString();
+        user = username.getText().toString().trim();
+        pass = password.getText().toString().trim();
         if(user.isEmpty() || pass.isEmpty()){
             Toast.makeText(this, "Xin điền đủ thông tin", Toast.LENGTH_SHORT).show();
         }

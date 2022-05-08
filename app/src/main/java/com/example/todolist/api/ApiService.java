@@ -5,7 +5,6 @@ import com.example.todolist.model.Password;
 import com.example.todolist.model.Job;
 
 import com.example.todolist.model.User;
-import com.example.todolist.response.AddJobRes;
 import com.example.todolist.response.GetJobsRes;
 import com.example.todolist.response.LoginRes;
 import com.example.todolist.response.MessageRes;
@@ -55,5 +54,5 @@ public interface ApiService {
     Call<MessageRes> forgotPassword( @Body User user );
 
     @POST("api/jobs")
-    Call<AddJobRes> addJob(@Header("Authorization") String authHeader, @Body Job job);
+    Call<MessageRes> addJob(@Header("Authorization") String authHeader, @Body Job job);
 }

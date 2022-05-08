@@ -84,11 +84,11 @@ public class UserInfo extends AppCompatActivity {
 
     private void editInfo() {
         String txtName, txtEmail, txtPhone, txtDescription, txtAddress;
-        txtName = editTextName.getText().toString();
-        txtPhone = editTextPhoneNumber.getText().toString();
-        txtDescription = editTextDescription.getText().toString();
-        txtAddress = editTextAddress.getText().toString();
-        txtEmail = editTextEmail.getText().toString();
+        txtName = editTextName.getText().toString().trim();
+        txtPhone = editTextPhoneNumber.getText().toString().trim();
+        txtDescription = editTextDescription.getText().toString().trim();
+        txtAddress = editTextAddress.getText().toString().trim();
+        txtEmail = editTextEmail.getText().toString().trim();
         if (txtName.isEmpty() || txtPhone.isEmpty() || txtDescription.isEmpty() || txtAddress.isEmpty() || txtEmail.isEmpty()) {
             Toast.makeText(UserInfo.this, "Hãy điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             return;

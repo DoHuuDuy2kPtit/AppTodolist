@@ -47,9 +47,9 @@ public class ChangePassword extends AppCompatActivity {
         btnAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String oldPass = txtOldPassword.getText().toString();
-                String newPass = txtNewPassword.getText().toString();
-                String confirmNewPass = txtComfirmNewPassword.getText().toString();
+                String oldPass = txtOldPassword.getText().toString().trim();
+                String newPass = txtNewPassword.getText().toString().trim();
+                String confirmNewPass = txtComfirmNewPassword.getText().toString().trim();
                 Log.i("oldPass", oldPass);
                 Log.i("newPass", newPass);
                 Log.i("confirmPass", confirmNewPass);

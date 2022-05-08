@@ -41,8 +41,8 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = editTextUserName.getText().toString();
-                String password = editTextPW.getText().toString();
+                String username = editTextUserName.getText().toString().trim();
+                String password = editTextPW.getText().toString().trim();
 
                 if (username.isEmpty() || password.isEmpty()) {
                     Toast.makeText(Login.this, "Hãy điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
