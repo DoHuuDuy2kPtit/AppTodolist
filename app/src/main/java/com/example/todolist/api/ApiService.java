@@ -4,8 +4,10 @@ package com.example.todolist.api;
 import com.example.todolist.model.Password;
 import com.example.todolist.model.Job;
 
+import com.example.todolist.model.Task;
 import com.example.todolist.model.User;
 import com.example.todolist.response.GetJobsRes;
+import com.example.todolist.response.GetTaskRes;
 import com.example.todolist.response.LoginRes;
 import com.example.todolist.response.MessageRes;
 import com.google.gson.Gson;
@@ -19,6 +21,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiService {
@@ -54,5 +57,15 @@ public interface ApiService {
     Call<MessageRes> forgotPassword( @Body User user );
 
     @POST("api/jobs")
+
     Call<MessageRes> addJob(@Header("Authorization") String authHeader, @Body Job job);
+
+    @GET("api/jobs/{jobId}/tasks")
+    Call<GetTaskRes> getTasks(@Path("jobId") String jobId, @Header("Authorization") String authHeader, @Query("limit") String limit, @Query("offset") String offset);
+
+    @POST("api/jobs/{jobId}/tasks")
+    Call<AddJobRes> addTask(@Path("jobId") String jobId, @Header("Authorization") String authHeader, @Body Task task);
+
+    @PUT("api/jobs/{jobId}/tasks/{taskId}")
+    Call<MessageRes> updateStatusTask(@Path("jobId") String jobId, @Path("taskId") String taskId, @Header("Authorization") String authHeader, @Body Task task);
 }
