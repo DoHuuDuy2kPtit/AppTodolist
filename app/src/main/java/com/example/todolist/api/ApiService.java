@@ -17,6 +17,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -63,8 +64,14 @@ public interface ApiService {
     Call<GetTaskRes> getTasks(@Path("jobId") String jobId, @Header("Authorization") String authHeader, @Query("limit") String limit, @Query("offset") String offset);
 
     @POST("api/jobs/{jobId}/tasks")
-    Call<AddJobRes> addTask(@Path("jobId") String jobId, @Header("Authorization") String authHeader, @Body Task task);
+    Call<MessageRes> addTask(@Path("jobId") String jobId, @Header("Authorization") String authHeader, @Body Task task);
 
     @PUT("api/jobs/{jobId}/tasks/{taskId}")
     Call<MessageRes> updateStatusTask(@Path("jobId") String jobId, @Path("taskId") String taskId, @Header("Authorization") String authHeader, @Body Task task);
+
+    @GET("api/jobs/{jobId}/tasks/{taskId}")
+    Call<Task> getTask(@Path("jobId") String jobId, @Path("taskId") String taskId, @Header("Authorization") String authHeader);
+
+    @DELETE("api/jobs/{jobId}/tasks/{taskId}")
+    Call<MessageRes> deleteTask(@Path("jobId") String jobId, @Path("taskId") String taskId, @Header("Authorization") String authHeader);
 }

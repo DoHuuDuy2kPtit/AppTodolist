@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:focusable="false">
 
     <RelativeLayout
-        android:layout_width="417dp"
-        android:layout_height="56dp"
+        android:layout_width="410dp"
+        android:layout_height="55dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -15,12 +16,28 @@
         app:layout_constraintVertical_bias="0.063">
 
 
-        <CheckBox
-            android:id="@+id/checkBoxTask"
+        <ImageView
+            android:id="@+id/ivCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="23dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="362dp"
+            android:layout_marginBottom="17dp"
+            app:srcCompat="@drawable/checkbox_unchecked" />
+
+        <TextView
+            android:id="@+id/tvTaskTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="30dp" />
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="71dp"
+            android:layout_marginBottom="18dp" />
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -65,6 +65,7 @@ public class Login extends AppCompatActivity {
                             editor.commit();
                             Intent mainActivity = new Intent(Login.this, MainActivity.class);
                             startActivity(mainActivity);
+                            finish();
                             return;
                         }
                         Log.i("", "abc");
@@ -107,6 +108,7 @@ public class Login extends AppCompatActivity {
             if (!shared.getString("accessToken", "").equals("")) {
                 Intent mainActivity = new Intent(Login.this, MainActivity.class);
                 startActivity(mainActivity);
+                finish();
                 return;
             }
         }
