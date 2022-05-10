@@ -144,13 +144,45 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/timeClockEdit"
+                        android:id="@+id/dateClockEdit"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="60dp"
                         android:layout_marginTop="0dp"
                         android:ems="10"
                         android:hint="Enter Date" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="130dp"
+                        android:src="@drawable/clock" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="-120dp"
+                        android:text="Thời gian"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/timeClockEdit"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="0dp"
+                        android:ems="10"
+                        android:hint="Enter time" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -176,7 +208,7 @@
                     <EditText
                         android:id="@+id/textAreaDescription"
                         android:layout_width="match_parent"
-                        android:layout_height="114dp"
+                        android:layout_height="match_parent"
                         android:background="@null"
                         android:gravity="top|left"
                         android:inputType="textMultiLine"
