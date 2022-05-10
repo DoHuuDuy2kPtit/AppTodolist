@@ -7,25 +7,29 @@ public class Task {
     private String title;
     private String dueDate;
     private String description;
+    private String time;
     private int jobId;
     private int status;
 
-    public Task(String title, String dueDate) {
+    public Task(String title, String dueDate, String time) {
         this.title = title;
         this.dueDate = dueDate;
+        this.time = time;
     }
 
-    public Task(String title, String dueDate, int status) {
+    public Task(String title, String dueDate, String time, int status) {
         this.title = title;
         this.dueDate = dueDate;
         this.status = status;
+        this.time = time;
     }
 
-    public Task(String title, String dueDate, int status,@Nullable String description) {
+    public Task(String title, String dueDate, String time, int status,@Nullable String description) {
         this.title = title;
         this.dueDate = dueDate;
         this.status = status;
         this.description = description;
+        this.time = time;
     }
 
     public Task(int id, String title, int status, int jobId, @Nullable String description, String dueDate) {
@@ -87,6 +91,14 @@ public class Task {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     @Override
